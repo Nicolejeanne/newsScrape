@@ -1,0 +1,31 @@
+body {
+  background-image: url("./images/newstype2.jpg");
+}
+
+.brand-logo {
+  margin-left: 20px;
+}
+
+.nav-wrapper {
+  background-color: #8f6d7d;
+}
+.btn {
+  background-color: #ccbeb3;
+  color: black;
+}
+.btn:hover {
+  background-color: #5e7997;
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}
+.page-footer {
+  background-color: #8f6d7d;
+  padding-top: 0;
+  text-align: center;
+}
