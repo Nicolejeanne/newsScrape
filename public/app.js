@@ -1,21 +1,18 @@
+// Button click to scrape articles
+$(document).on("click", ".scrapeButton", function() {
+
 // Get all the articles as a JSON
 $.getJSON("/articles", function(data) {
   // Loop through each one
   for (var i = 0; i < data.length; i++) {
     // Display the info on the page
     $("#articles").append(
-      "<p data-id='" +
-        data[i]._id +
-        "'>" +
-        data[i].title +
-        "<br />" +
-        "<a href='https://www.latimes.com" +
-        data[i].link +
-        "'>" +
-        data[i].link +
-        "</a></p>"
+      "<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + "<a href='https://www.latimes.com" +
+  data[i].link + "'>" + data[i].link + "</a>" + 
+  "&nbsp&nbsp&nbsp&nbsp<a class='waves-effect waves-light btn scrapeButton' id='savenote'>Save Article</a></p>"
     );
   }
+});
 });
 
 // When the user clicks on a <p> element

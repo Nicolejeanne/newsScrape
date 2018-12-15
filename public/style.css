@@ -37,10 +37,14 @@ p {
 #articles {
   /* background-color: rgba(0, 0, 0, 0.8); */
   background-color: #8f6d7d;
-  padding: 10px 50px;
+  padding: 10px 10px 10px 50px;
   margin-top: 20px;
 }
 a {
   color: black;
   font-size: 18px;
+}
+.saveButton {
+  display: flex;
+  float: right;
 }

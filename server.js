@@ -30,14 +30,13 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/latScraper";
 
 mongoose.connect(MONGODB_URI);
 
-// By default mongoose uses callbacks for async queries, we're setting it to use promises (.then syntax) instead
-// Connect to the Mongo DB
-// mongoose.Promise = Promise;
-// mongoose.connect("mongodb://localhost/latScraper", {
-//  useMongoClient: true
-// });
-
 // Routes
+
+// Route for landing page
+app.get("/", function (req, res) {
+  res.render("index");
+});
+
 // A GET route for scraping the website
 app.get("/scrape", function(req, res) {
   axios.get("https://www.latimes.com/").then(function(response) {
