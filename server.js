@@ -26,30 +26,36 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytScraper";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/latScraper";
 
 mongoose.connect(MONGODB_URI);
+
+// By default mongoose uses callbacks for async queries, we're setting it to use promises (.then syntax) instead
+// Connect to the Mongo DB
+// mongoose.Promise = Promise;
+// mongoose.connect("mongodb://localhost/latScraper", {
+//  useMongoClient: true
+// });
 
 // Routes
 // A GET route for scraping the website
 app.get("/scrape", function(req, res) {
-  axios.get("http://www.nytimes.com/").then(function(response) {
+  axios.get("https://www.latimes.com/").then(function(response) {
     var $ = cheerio.load(response.data);
+    console.log($);
     let result = [];
 
-		// With cheerio, find each h2-tag with the class "balancedHeadline" and loop through the results
-		$('h2.balancedHeadline').each(function(i, element) {
-			// Save the text of the h2-tag as "title"
+		// With cheerio, find each h5-tag and loop through the results
+		$('h5').each(function(i, element) {
+			// Save the text of the h5-tag as "title"
 			var title = $(element).text();
 
 			// Find the h2 tag's parent a-tag, and save it's href value as "link"
 			var link = $(element)
-				.parent()
+				.children()
 				.attr('href');
       result.push({title: title, link: link});
       // Create a new Article using the `result` object built from scraping
-      
-    });
     Article.create(result)
         .then(function(dbArticle) {
           console.log(dbArticle);
@@ -58,8 +64,9 @@ app.get("/scrape", function(req, res) {
         .catch(function(err) {
           return res.json(err);
         });
-    res.send("Scrape complete");
   });
+  res.send("Scrape complete");
+});
 });
 
 // Route for getting all Articles from the db

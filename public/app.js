@@ -9,7 +9,7 @@ $.getJSON("/articles", function(data) {
         "'>" +
         data[i].title +
         "<br />" +
-        "<a href='" +
+        "<a href='https://www.latimes.com" +
         data[i].link +
         "'>" +
         data[i].link +
@@ -18,10 +18,6 @@ $.getJSON("/articles", function(data) {
   }
 });
 
-// $(document).on("click", "#scrape", function() {
-//   window.location = "http://localhost:3000/scrape";
-// });
-
 // When the user clicks on a <p> element
 $(document).on("click", "p", function() {
   // clear out the notes
@@ -29,13 +25,13 @@ $(document).on("click", "p", function() {
   // Assign data-id from <p> to variable
   var thisId = $(this).attr("data-id");
 
-//   Make call for article that the user has clicked on
+  //   Make call for article that the user has clicked on
   $.ajax({
     method: "GET",
     url: "/articles/" + thisId
   }).then(function(data) {
     console.log(data);
-    $("#notes").append("<h2>" + data.title + "</h2>");
+    $("#notes").append("<h5>" + data.title + "</h5>");
     $("#notes").append("<input id='titleinput' name='title' />");
     $("#notes").append("<textarea id='bodyinput' name='body' ></textarea>");
     $("#notes").append(

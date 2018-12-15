@@ -29,3 +29,18 @@ main {
   padding-top: 0;
   text-align: center;
 }
+p {
+  color: white;
+  font-weight: 600;
+  font-size: 22px;
+}
+#articles {
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: #8f6d7d;
+  padding: 10px 50px;
+  margin-top: 20px;
+}
+a {
+  color: black;
+  font-size: 18px;
+}
