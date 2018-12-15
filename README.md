@@ -6,7 +6,7 @@
 
 An app that scrapes articles from the LA Times website and lets users save articles and leave comments on the latest news.
 
-![Website](https://github.com/Nicolejeanne/newsScrape/tree/master/public/images/mongoScraperSitePic.png)
+![Website](https://github.com/Nicolejeanne/newsScrape/blob/master/public/images/mongoScraperSitePic.png)
 
 ## How It Works
 
